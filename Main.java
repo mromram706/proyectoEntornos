@@ -27,27 +27,7 @@ public class Main {
                     Case2();
                 }
                 case 3 -> {
-                    System.out.print("Índice del producto a modificar: ");
-                    indice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (indice < 0 || indice >= productos.size()) {
-                        System.out.println("Índice no válido");
-                    } else {
-                        System.out.print("Nuevo nombre del producto (deja vacío para no modificar): ");
-                        String nuevoNombre = scanner.nextLine();
-                        System.out.print("Nuevo precio del producto (deja 0 para no modificar): ");
-                        double nuevoPrecio = scanner.nextDouble();
-                        scanner.nextLine();
-                        Producto productoAModificar = productos.get(indice);
-                        if (!nuevoNombre.isEmpty()) {
-                            productoAModificar.setNombre(nuevoNombre);
-                        }
-                        if (nuevoPrecio != 0) {
-                            productoAModificar.setPrecio(nuevoPrecio);
-                        }
-
-                        System.out.println("Producto modificado correctamente");
-                    }
+                    modificarProducto();
                 }
                 case 4 -> {
                     Case4();
@@ -59,7 +39,17 @@ public class Main {
         } while (opcion != 5);
     }
 
-
+    /**
+     * <h2>Refactorización del case 3 (realizado por Mar)</h2>
+     * <ul>Este método oferece la posibilidad de modificar un producto. Los pasos a seguir son:
+     * <li>Sale un mensaje pidiendo el índice del producto que queremos modificar</li>
+     * <li>Se introduce el índice del producto a modificar</li>
+     * <li>En el if se controlan los casos en los que el índice no sea válido</li>
+     * <li>El else maneja que en el caso de que el código sea válido, se introduzca tanto el nombre como el precio del producto que deseamos modificar</li>
+     * <li>El siguiente if que hay dentro del else se encarga de que si el producto ya tiene nombre, le deje el nombre que ya le habíamos asignado en la variable nuevoNombre (recogida mediante escaner)</li>
+     * <li>El último if hace que si el precio es distinto a 0, se le deje el precio que le habíamos asignado con en la variable nuevoPrecio (recogida mediante Scanner)</li>
+     * </ul>
+     */
 
     /**
      * <h2>Refactorización de los "cases" en metodos propios</h2>
@@ -93,6 +83,30 @@ public class Main {
     } else {
         productos.remove(indice);
         System.out.println("Producto borrado correctamente");
+    }
+    private static void modificarProducto() {
+        int indice;
+        System.out.print("Índice del producto a modificar: ");
+        indice = scanner.nextInt();
+        scanner.nextLine();
+        if (indice < 0 || indice >= productos.size()) {
+            System.out.println("Índice no válido");
+        } else {
+            System.out.print("Nuevo nombre del producto (deja vacío para no modificar): ");
+            String nuevoNombre = scanner.nextLine();
+            System.out.print("Nuevo precio del producto (deja 0 para no modificar): ");
+            double nuevoPrecio = scanner.nextDouble();
+            scanner.nextLine();
+            Producto productoAModificar = productos.get(indice);
+            if (!nuevoNombre.isEmpty()) {
+                productoAModificar.setNombre(nuevoNombre);
+            }
+            if (nuevoPrecio != 0) {
+                productoAModificar.setPrecio(nuevoPrecio);
+            }
+
+            System.out.println("Producto modificado correctamente");
+        }
     }
     private static void Case4() {
         System.out.println("=== Listado de productos ===");

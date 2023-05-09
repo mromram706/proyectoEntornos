@@ -10,36 +10,21 @@ public class Main {
         int opcion;
         int indice;
         do {
-            System.out.println("=== Menú principal ===");
+            System.out.println("=== Menú añadida ===");
+            System.out.println("=== Menú Principal ===");
             System.out.println("1. Añadir producto");
-            System.out.println("2. Borrar producto");
+            System.out.println("2. Borrar");
             System.out.println("3. Modificar producto");
             System.out.println("4. Ver listado de productos");
             System.out.println("5. Salir");
-            System.out.print("Selecciona una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
             switch (opcion) {
                 case 1 -> {
-                    System.out.print("Nombre del producto: ");
-                    String nombre = scanner.nextLine();
-                    System.out.print("Precio del producto: ");
-                    double precio = scanner.nextDouble();
-                    scanner.nextLine();
-                    Producto producto = new Producto(nombre, precio);
-                    productos.add(producto);
-                    System.out.println("Producto añadido correctamente");
+                    Case1();
                 }
                 case 2 -> {
-                    System.out.print("Índice del producto a borrar: ");
-                    indice = scanner.nextInt();
-                    scanner.nextLine();
-                    if (indice < 0 || indice >= productos.size()) {
-                        System.out.println("Índice no válido");
-                    } else {
-                        productos.remove(indice);
-                        System.out.println("Producto borrado correctamente");
-                    }
+                    Case2();
                 }
                 case 3 -> {
                     System.out.print("Índice del producto a modificar: ");
@@ -66,9 +51,9 @@ public class Main {
                 }
                 case 4 -> {
                     System.out.println("=== Listado de productos ===");
-                    for (int index = 0; index < productos.size(); index++) {
-                        Producto productoAMostrar = productos.get(index);
-                        System.out.println(index + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
+                    for (int i = 0; i < productos.size(); i++) {
+                        Producto productoAMostrar = productos.get(i);
+                        System.out.println(i + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
                     }
 
                     System.out.println("============================");
@@ -79,6 +64,37 @@ public class Main {
         } while (opcion != 5);
     }
 
+    /**
+     * <h2>Refactorización de los "cases" en metodos propios</h2>
+     * <ul>Carlos ha refactorizado:
+     * <li>Case1</li>
+     * <li>Case2</li>
+     * </ul>
+     */
+    public static Case1(){
+        System.out.print("Nombre del producto: ");
+        String nombre = scanner.nextLine();
+        System.out.print("Precio del producto: ");
+        double precio = scanner.nextDouble();
+        scanner.nextLine();
+        Producto producto = new Producto(nombre, precio);
+        productos.add(producto);
+        System.out.println("Producto añadido correctamente");
+    }
+    
+    public static Case2(){
+        System.out.print("Índice del producto a borrar: ");
+        indice = scanner.nextInt();
+        scanner.nextLine();
+        if (indice < 0 || indice >= productos.size()) {
+            System.out.println("Índice no válido");
+    }
+    
+    } else {
+        productos.remove(indice);
+        System.out.println("Producto borrado correctamente");
+    }
+    
     static class Producto {
         private String nombre;
         private double precio;
@@ -104,4 +120,5 @@ public class Main {
             this.precio = precio;
         }
     }
+}
 

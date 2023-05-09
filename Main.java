@@ -58,8 +58,9 @@ public class Main {
 
                     System.out.println("============================");
                 }
-                case 5 -> System.out.println("¡Hasta luego!");
-                default -> System.out.println("Opción no válida");
+                case 5 -> {
+                    Case5();
+                }
             }
         } while (opcion != 5);
     }
@@ -93,6 +94,11 @@ public class Main {
     } else {
         productos.remove(indice);
         System.out.println("Producto borrado correctamente");
+    }
+
+    public static Case5() {
+        System.out.println("¡Hasta luego!");
+        System.out.println("Opción no válida");
     }
     
     static class Producto {

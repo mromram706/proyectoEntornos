@@ -50,13 +50,7 @@ public class Main {
                     }
                 }
                 case 4 -> {
-                    System.out.println("=== Listado de productos ===");
-                    for (int i = 0; i < productos.size(); i++) {
-                        Producto productoAMostrar = productos.get(i);
-                        System.out.println(i + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
-                    }
-
-                    System.out.println("============================");
+                    Case4();
                 }
                 case 5 -> {
                     Case5();
@@ -65,11 +59,16 @@ public class Main {
         } while (opcion != 5);
     }
 
+
+
     /**
      * <h2>Refactorización de los "cases" en metodos propios</h2>
      * <ul>Carlos ha refactorizado:
      * <li>Case1</li>
      * <li>Case2</li>
+     * </ul>
+     * <ul>Rocio ha refactorizado:
+     * <li>Case4</li>
      * </ul>
      */
     public static Case1(){
@@ -95,7 +94,15 @@ public class Main {
         productos.remove(indice);
         System.out.println("Producto borrado correctamente");
     }
+    private static void Case4() {
+        System.out.println("=== Listado de productos ===");
+        for (int i = 0; i < productos.size(); i++) {
+            Producto productoAMostrar = productos.get(i);
+            System.out.println(i + ". " + productoAMostrar.getNombre() + " - $" + productoAMostrar.getPrecio());
+        }
 
+        System.out.println("============================");
+    }
     public static Case5() {
         System.out.println("¡Hasta luego!");
         System.out.println("Opción no válida");
